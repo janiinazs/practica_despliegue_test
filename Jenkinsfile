@@ -1,8 +1,8 @@
 pipeline {
-    agent any
-
-    tools {
-        nodejs "Node25" // Asume que tienes configurada una instalación llamada "Node18" en Jenkins
+    agent {
+        docker {
+            image 'node:22'
+        }
     }
 
     stages {
@@ -19,18 +19,12 @@ pipeline {
         }
 
         stage('Construir Imagen Docker') {
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
             steps {
                 sh 'docker build -t hola-mundo-node:latest .'
             }
         }
 
-        stage('Ejecutar Contenedor Node.js') {
-            when {
-                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
-            }
+        stage('Ejecutar Contenedor') {
             steps {
                 sh '''
                     docker stop hola-mundo-node || true
