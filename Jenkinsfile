@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs "Node18" // Asume que tienes configurada una instalación llamada "Node18" en Jenkins
+        nodejs "Node25" // Asume que tienes configurada una instalación llamada "Node18" en Jenkins
     }
 
     stages {
