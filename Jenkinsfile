@@ -8,7 +8,13 @@ pipeline {
     stages {
         stage('Instalar dependencias') {
     steps {
+        // 1. Eliminar dependencias antiguas para evitar conflictos de sistema de archivos
+        sh 'rm -rf node_modules package-lock.json'
+        
+        // 2. Limpiar caché residual
         sh 'npm cache clean --force'
+        
+        // 3. Instalar desde cero de forma optimizada
         sh 'npm install --no-audit --no-fund'
     }
 }
