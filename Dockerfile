@@ -9,6 +9,7 @@ COPY package*.json ./
 COPY index.js .
 
 # Instalar dependencias
+RUN rm -f package-lock.json
 RUN npm install
 
 # Copiar el resto de los archivos
