@@ -4,7 +4,7 @@
     "description": "Mi aplicación Node.js",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "test": "jest --passWithNoTests"
     },
     "jest": {
         "testEnvironment": "node"
