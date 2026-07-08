@@ -6,6 +6,7 @@ WORKDIR /usr/src/app
 
 # Copiar archivos al contenedor
 COPY package*.json ./
+RUN npm config set strict-ssl false
 COPY index.js .
 
 # Instalar dependencias
