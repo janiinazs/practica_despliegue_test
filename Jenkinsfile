@@ -7,10 +7,11 @@ pipeline {
 
     stages {
         stage('Instalar dependencias') {
-            steps {
-                sh 'npm install'
-            }
-        }
+    steps {
+        sh 'npm cache clean --force'
+        sh 'npm install --no-audit --no-fund'
+    }
+}
 
         stage('Ejecutar tests') {
             steps {
