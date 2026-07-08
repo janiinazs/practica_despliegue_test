@@ -34,10 +34,11 @@ pipeline {
         }
         
         stage('Ejecutar Contenedor') {
-            // Seguimos en el entorno nativo de Jenkins
             agent any 
             steps {
-                // Ajusta este comando a los puertos que uses en tu aplicación
+                // Destruir contenedor anterior si existe (el || true evita errores si no existe)
+                sh 'docker rm -f mi-app || true'
+                // Crear el nuevo contenedor
                 sh 'docker run -d -p 3000:3000 --name mi-app hola-mundo-node:latest'
             }
         }
